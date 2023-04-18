@@ -1,0 +1,19 @@
+{
+  "name": "Capstone_express_ORM",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ThanhHuy25122/Capstone_express_ORM.git",
+  "author": "ThanhHuy25122 <huyxh251@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.12.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22",
+    "prisma": "^4.12.0"
+  }
+}
