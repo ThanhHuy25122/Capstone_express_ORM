@@ -13,7 +13,7 @@ const successCode = (res, data, message) => {
 
 // 400 : Bad Request
 
-const errorCode = (res, data, message) => {
+const errorCode = (res, data = {}, message) => {
   return res.status(400).json({
     statusCode: "400",
     message,

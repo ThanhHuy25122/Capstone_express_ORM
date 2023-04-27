@@ -2,6 +2,43 @@ const { PrismaClient } = require("@prisma/client");
 const { successCode, failCode, errorCode } = require("../config/response");
 const prisma = new PrismaClient();
 
+const bcrypt = require("bcrypt"); // mã hóa password
+
+const { createToken } = require("../config/jwt");
+
+const encodePassword = (password, number = 10) => {
+  return bcrypt.hashSync(password, number);
+};
+
+const userLogin = async (req, res) => {
+  try {
+    //  username và password
+    let { email, password } = req.body;
+
+    let checkUser = await prisma.nguoi_dung.findFirst({
+      where: {
+        email: email,
+      },
+    });
+
+    // user tồn tại --> kiểm tra tiếp mật khẩu
+    if (checkUser) {
+      let checkPass = bcrypt.compareSync(password, checkUser.mat_khau);
+      if (checkPass) {
+        let token = createToken(checkUser);
+        successCode(res, token, "Login success");
+      } else {
+        errorCode(res, "pass word not found");
+      }
+    } else {
+      // user ko tồn tại > ko cho đăng nhập
+      errorCode(res, "email not found");
+    }
+  } catch (error) {
+    failCode(res);
+  }
+};
+
 const getUser = async (req, res) => {
   try {
     const data = await prisma.nguoi_dung.findMany();
@@ -27,11 +64,12 @@ const createUser = async (req, res) => {
   const { email, password, fullName, age, avatar } = req.body;
   const data = {
     email: email,
-    mat_khau: password,
+    mat_khau: encodePassword(password),
     ho_ten: fullName,
     tuoi: age,
     anh_dai_dien: avatar,
   };
+
   if (
     email !== "" &&
     password !== "" &&
@@ -42,7 +80,7 @@ const createUser = async (req, res) => {
     try {
       await prisma.nguoi_dung.create({ data: data });
 
-      successCode(res, data, `success get user`);
+      successCode(res, data, `Signup success`);
     } catch (error) {
       failCode(res);
     }
@@ -56,7 +94,7 @@ const updateUser = async (req, res) => {
   const { email, password, fullName, age, avatar } = req.body;
   const data = {
     email: email,
-    mat_khau: password,
+    mat_khau: encodePassword(password),
     ho_ten: fullName,
     tuoi: age,
     anh_dai_dien: avatar,
@@ -89,26 +127,20 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   const { userId } = req.params;
-  if (userId) {
-    const user = await prisma.nguoi_dung.findFirst({
-      where: { nguoi_dung_id: Number(userId) },
-    });
+  //Truy vấn người dùng
+  const user = await prisma.nguoi_dung.findFirst({
+    where: { nguoi_dung_id: Number(userId) },
+  });
 
-    if (user) {
-      try {
-        await prisma.nguoi_dung.delete({
-          where: { nguoi_dung_id: Number(userId) },
-        });
-        successCode(res, {}, `success delete user`);
-      } catch (error) {
-        failCode(res);
-      }
-    } else {
-      errorCode(res, {}, "Please check your user ID again");
-    }
-  } else {
-    failCode(res);
+  if (!user) {
+    return errorCode(res, "User not found.");
   }
+
+  await prisma.nguoi_dung.delete({
+    where: { nguoi_dung_id: Number(userId) },
+  });
+
+  successCode(res, {}, "User deleted successfully");
 };
 
 module.exports = {
@@ -117,4 +149,5 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
+  userLogin,
 };

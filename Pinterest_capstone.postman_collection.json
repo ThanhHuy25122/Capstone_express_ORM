@@ -1,0 +1,718 @@
+{
+	"info": {
+		"_postman_id": "60068cc2-facc-4b68-baa3-f98cc0a59794",
+		"name": "Pinterest_capstone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24894494"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"huy@gmail.com\",\r\n    \"password\" :  \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/user/login",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjYsImVtYWlsIjoidGhhbmhodXlAZ21haWwuY29tIiwibWF0X2toYXUiOiIkMmIkMTAkbUJyOWxzQzZFMlZwYmNHTWlyVy5LLkt5eTFDMjNGSU55ejFvcFg1MGdPNVhZOHd6Ym9YNUciLCJob190ZW4iOiJUaGFuaCBIdXkiLCJ0dW9pIjoxMiwiYW5oX2RhaV9kaWVuIjoidGhhbmguanBnIn0sImlhdCI6MTY4MjU2NzEwMCwiZXhwIjoxNjgyNTcwNzAwfQ.d9zSf5QljuRRPnv7UKR9okT4tIxYv3EEglptl8mIM_8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}/user/get-user",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"user",
+						"get-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/user/get-user/1",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"user",
+						"get-user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"huy@gmail.com\",\r\n    \"password\" : \"1234\",\r\n    \"fullName\" :  \"Thanh Huy\",\r\n    \"age\" : 12,\r\n    \"avatar\" : \"thanh.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/user/create-user",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"user",
+						"create-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User By Id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjYsImVtYWlsIjoidGhhbmhodXlAZ21haWwuY29tIiwibWF0X2toYXUiOiIkMmIkMTAkbUJyOWxzQzZFMlZwYmNHTWlyVy5LLkt5eTFDMjNGSU55ejFvcFg1MGdPNVhZOHd6Ym9YNUciLCJob190ZW4iOiJUaGFuaCBIdXkiLCJ0dW9pIjoxMiwiYW5oX2RhaV9kaWVuIjoidGhhbmguanBnIn0sImlhdCI6MTY4MjU2NzEwMCwiZXhwIjoxNjgyNTcwNzAwfQ.d9zSf5QljuRRPnv7UKR9okT4tIxYv3EEglptl8mIM_8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"huy@gmail.com\",\r\n    \"password\" : \"123\",\r\n    \"fullName\" :  \"Thanh Huy\",\r\n    \"age\" : 122,\r\n    \"image\" : \"thanh.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/user/update-user/9",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"user",
+						"update-user",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjYsImVtYWlsIjoidGhhbmhodXlAZ21haWwuY29tIiwibWF0X2toYXUiOiIkMmIkMTAkbUJyOWxzQzZFMlZwYmNHTWlyVy5LLkt5eTFDMjNGSU55ejFvcFg1MGdPNVhZOHd6Ym9YNUciLCJob190ZW4iOiJUaGFuaCBIdXkiLCJ0dW9pIjoxMiwiYW5oX2RhaV9kaWVuIjoidGhhbmguanBnIn0sImlhdCI6MTY4MjU2NzEwMCwiZXhwIjoxNjgyNTcwNzAwfQ.d9zSf5QljuRRPnv7UKR9okT4tIxYv3EEglptl8mIM_8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}/user/delete-user/8",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"user",
+						"delete-user",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Image All",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjksImVtYWlsIjoiaHV5QGdtYWlsLmNvbSIsIm1hdF9raGF1IjoiJDJiJDEwJDZGTElRbjFTcGloRDBqUnVwQlZ5NHVaLi4zcXQ3LjcyVGNaSHVFc05PeThTU2YxdVEwSlB5IiwiaG9fdGVuIjoiVGhhbmggSHV5IiwidHVvaSI6MTIyLCJhbmhfZGFpX2RpZW4iOiJ0aGFuaC5qcGcifSwiaWF0IjoxNjgyNTY3NTczLCJleHAiOjE2ODI1NzExNzN9.D25Qgg7dsxezGB9cFyYk77wVTktt04ifrf0N7YbzSRE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}/image/get-image",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"image",
+						"get-image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Image By Keywords",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/image/get-image?keywords=h",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"image",
+						"get-image"
+					],
+					"query": [
+						{
+							"key": "keywords",
+							"value": "h"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Image By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/image/get-image/8",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"image",
+						"get-image",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Image By User Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/image/get-image?userId=1",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"image",
+						"get-image"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Image",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjksImVtYWlsIjoiaHV5QGdtYWlsLmNvbSIsIm1hdF9raGF1IjoiJDJiJDEwJDZGTElRbjFTcGloRDBqUnVwQlZ5NHVaLi4zcXQ3LjcyVGNaSHVFc05PeThTU2YxdVEwSlB5IiwiaG9fdGVuIjoiVGhhbmggSHV5IiwidHVvaSI6MTIyLCJhbmhfZGFpX2RpZW4iOiJ0aGFuaC5qcGcifSwiaWF0IjoxNjgyNTY3NTczLCJleHAiOjE2ODI1NzExNzN9.D25Qgg7dsxezGB9cFyYk77wVTktt04ifrf0N7YbzSRE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imageName\" : \"thanhhuy\",\r\n    \"url\" :  \"Thanh Huy\",\r\n    \"description\" : \"12323123\",\r\n    \"userId\" : 9\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/image/create-image",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"image",
+						"create-image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Image",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjksImVtYWlsIjoiaHV5QGdtYWlsLmNvbSIsIm1hdF9raGF1IjoiJDJiJDEwJDZGTElRbjFTcGloRDBqUnVwQlZ5NHVaLi4zcXQ3LjcyVGNaSHVFc05PeThTU2YxdVEwSlB5IiwiaG9fdGVuIjoiVGhhbmggSHV5IiwidHVvaSI6MTIyLCJhbmhfZGFpX2RpZW4iOiJ0aGFuaC5qcGcifSwiaWF0IjoxNjgyNTY3NTczLCJleHAiOjE2ODI1NzExNzN9.D25Qgg7dsxezGB9cFyYk77wVTktt04ifrf0N7YbzSRE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imageName\" : \"1231231\",\r\n    \"url\" :  \"Thanh Huy\",\r\n    \"description\" : \"123123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/image/update-image?userId=1&imageId=9",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"image",
+						"update-image"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						},
+						{
+							"key": "imageId",
+							"value": "9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Image",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjksImVtYWlsIjoiaHV5QGdtYWlsLmNvbSIsIm1hdF9raGF1IjoiJDJiJDEwJDZGTElRbjFTcGloRDBqUnVwQlZ5NHVaLi4zcXQ3LjcyVGNaSHVFc05PeThTU2YxdVEwSlB5IiwiaG9fdGVuIjoiVGhhbmggSHV5IiwidHVvaSI6MTIyLCJhbmhfZGFpX2RpZW4iOiJ0aGFuaC5qcGcifSwiaWF0IjoxNjgyNTY3NTczLCJleHAiOjE2ODI1NzExNzN9.D25Qgg7dsxezGB9cFyYk77wVTktt04ifrf0N7YbzSRE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imageName\" : \"1231231\",\r\n    \"url\" :  \"Thanh Huy\",\r\n    \"description\" : \"123123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/image/delete-image?userId=9&imageId=10",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"image",
+						"delete-image"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "9"
+						},
+						{
+							"key": "imageId",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload image",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjksImVtYWlsIjoiaHV5QGdtYWlsLmNvbSIsIm1hdF9raGF1IjoiJDJiJDEwJDZGTElRbjFTcGloRDBqUnVwQlZ5NHVaLi4zcXQ3LjcyVGNaSHVFc05PeThTU2YxdVEwSlB5IiwiaG9fdGVuIjoiVGhhbmggSHV5IiwidHVvaSI6MTIyLCJhbmhfZGFpX2RpZW4iOiJ0aGFuaC5qcGcifSwiaWF0IjoxNjgyNTY3NTczLCJleHAiOjE2ODI1NzExNzN9.D25Qgg7dsxezGB9cFyYk77wVTktt04ifrf0N7YbzSRE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Asus/Pictures/zalo/Serbiandude_Hyper_carnight_cityneon_glowstylegran_turismo_119f5552-5ac1-47c6-ba23-e90bf56603d8.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{domain}}/image/upload-image?imageId=9",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"image",
+						"upload-image"
+					],
+					"query": [
+						{
+							"key": "imageId",
+							"value": "9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Saved Image By User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjksImVtYWlsIjoiaHV5QGdtYWlsLmNvbSIsIm1hdF9raGF1IjoiJDJiJDEwJDZGTElRbjFTcGloRDBqUnVwQlZ5NHVaLi4zcXQ3LjcyVGNaSHVFc05PeThTU2YxdVEwSlB5IiwiaG9fdGVuIjoiVGhhbmggSHV5IiwidHVvaSI6MTIyLCJhbmhfZGFpX2RpZW4iOiJ0aGFuaC5qcGcifSwiaWF0IjoxNjgyNTY3NTczLCJleHAiOjE2ODI1NzExNzN9.D25Qgg7dsxezGB9cFyYk77wVTktt04ifrf0N7YbzSRE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imageName\" : \"1231231\",\r\n    \"url\" :  \"Thanh Huy\",\r\n    \"description\" : \"123123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/save-image/get-save?userId=1",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"save-image",
+						"get-save"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Saved Image By Image",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjksImVtYWlsIjoiaHV5QGdtYWlsLmNvbSIsIm1hdF9raGF1IjoiJDJiJDEwJDZGTElRbjFTcGloRDBqUnVwQlZ5NHVaLi4zcXQ3LjcyVGNaSHVFc05PeThTU2YxdVEwSlB5IiwiaG9fdGVuIjoiVGhhbmggSHV5IiwidHVvaSI6MTIyLCJhbmhfZGFpX2RpZW4iOiJ0aGFuaC5qcGcifSwiaWF0IjoxNjgyNTY3NTczLCJleHAiOjE2ODI1NzExNzN9.D25Qgg7dsxezGB9cFyYk77wVTktt04ifrf0N7YbzSRE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imageName\" : \"1231231\",\r\n    \"url\" :  \"Thanh Huy\",\r\n    \"description\" : \"123123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/save-image/get-save?imageId=1",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"save-image",
+						"get-save"
+					],
+					"query": [
+						{
+							"key": "imageId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Saved Image By User and Image",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjksImVtYWlsIjoiaHV5QGdtYWlsLmNvbSIsIm1hdF9raGF1IjoiJDJiJDEwJDZGTElRbjFTcGloRDBqUnVwQlZ5NHVaLi4zcXQ3LjcyVGNaSHVFc05PeThTU2YxdVEwSlB5IiwiaG9fdGVuIjoiVGhhbmggSHV5IiwidHVvaSI6MTIyLCJhbmhfZGFpX2RpZW4iOiJ0aGFuaC5qcGcifSwiaWF0IjoxNjgyNTY3NTczLCJleHAiOjE2ODI1NzExNzN9.D25Qgg7dsxezGB9cFyYk77wVTktt04ifrf0N7YbzSRE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imageName\" : \"1231231\",\r\n    \"url\" :  \"Thanh Huy\",\r\n    \"description\" : \"123123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/save-image/get-save?imageId=1&userId=1",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"save-image",
+						"get-save"
+					],
+					"query": [
+						{
+							"key": "imageId",
+							"value": "1"
+						},
+						{
+							"key": "userId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Handle Save/Delete Save Image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imageName\" : \"1231231\",\r\n    \"url\" :  \"Thanh Huy\",\r\n    \"description\" : \"123123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/save-image/save?userId=2&imageId=1",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"save-image",
+						"save"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "2"
+						},
+						{
+							"key": "imageId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Review",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/review/get-review",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"review",
+						"get-review"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Review",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjksImVtYWlsIjoiaHV5QGdtYWlsLmNvbSIsIm1hdF9raGF1IjoiJDJiJDEwJDZGTElRbjFTcGloRDBqUnVwQlZ5NHVaLi4zcXQ3LjcyVGNaSHVFc05PeThTU2YxdVEwSlB5IiwiaG9fdGVuIjoiVGhhbmggSHV5IiwidHVvaSI6MTIyLCJhbmhfZGFpX2RpZW4iOiJ0aGFuaC5qcGcifSwiaWF0IjoxNjgyNTY3NTczLCJleHAiOjE2ODI1NzExNzN9.D25Qgg7dsxezGB9cFyYk77wVTktt04ifrf0N7YbzSRE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\" : \"Xau\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/review/save-review?userId=1&imageId=3",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"review",
+						"save-review"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						},
+						{
+							"key": "imageId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Review",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjksImVtYWlsIjoiaHV5QGdtYWlsLmNvbSIsIm1hdF9raGF1IjoiJDJiJDEwJDZGTElRbjFTcGloRDBqUnVwQlZ5NHVaLi4zcXQ3LjcyVGNaSHVFc05PeThTU2YxdVEwSlB5IiwiaG9fdGVuIjoiVGhhbmggSHV5IiwidHVvaSI6MTIyLCJhbmhfZGFpX2RpZW4iOiJ0aGFuaC5qcGcifSwiaWF0IjoxNjgyNTY3NTczLCJleHAiOjE2ODI1NzExNzN9.D25Qgg7dsxezGB9cFyYk77wVTktt04ifrf0N7YbzSRE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\" : \"dep\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/review/update-review?userId=1&imageId=1&reviewId=1",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"review",
+						"update-review"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						},
+						{
+							"key": "imageId",
+							"value": "1"
+						},
+						{
+							"key": "reviewId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "domain",
+			"value": "localhost:8080/api",
+			"type": "string"
+		}
+	]
+}

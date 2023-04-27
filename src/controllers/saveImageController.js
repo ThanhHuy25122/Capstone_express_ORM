@@ -62,8 +62,7 @@ const getSaveImage = async (req, res) => {
   }
 
   if (!user && !image) {
-    errorCode(res, {}, "Image vs user not found");
-    return;
+    errorCode(res, "Image vs user not found");
   }
   failCode(res);
 };
@@ -78,7 +77,7 @@ const handleImage = async (req, res) => {
   });
 
   if (!image) {
-    errorCode(res, {}, "No image found");
+    errorCode(res, "No image found");
     return;
   }
 
@@ -89,7 +88,7 @@ const handleImage = async (req, res) => {
   });
 
   if (!user) {
-    errorCode(res, {}, "No user found");
+    errorCode(res, "No user found");
     return;
   }
 
@@ -110,7 +109,7 @@ const handleImage = async (req, res) => {
     await prisma.luu_anh.create({
       data: data,
     });
-    successCode(res, {}, "Save Image Success");
+    return successCode(res, {}, "Save Image Success");
   } else {
     await prisma.luu_anh.delete({
       where: {

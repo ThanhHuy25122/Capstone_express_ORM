@@ -18,3 +18,6 @@ app.listen(8080); // tạo server localhost với port 8080
 const rootRouter = require("./routes/rootRoute");
 
 app.use("/api", rootRouter); // sử dụng /api/
+
+//yarn add bcrypt //
+// yarn add multer
