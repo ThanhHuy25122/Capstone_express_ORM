@@ -3,12 +3,27 @@ const { successCode, failCode, errorCode } = require("../config/response");
 const prisma = new PrismaClient();
 
 const bcrypt = require("bcrypt"); // mã hóa password
+const multer = require("multer");
+const fs = require("fs");
 
 const { createToken } = require("../config/jwt");
 
 const encodePassword = (password, number = 10) => {
   return bcrypt.hashSync(password, number);
 };
+
+const storage = multer.diskStorage({
+  destination: (req, res, callback) =>
+    callback(null, process.cwd() + "/public/img"),
+  filename: (req, res, callback) => {
+    let newName = Date.now() + "_" + file.originalname.replace(/\s+/g, "_");
+    callback((err) => console.log(err), newName);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+const uploadAvatar = (req, res) => {};
 
 const userLogin = async (req, res) => {
   try {
@@ -150,4 +165,6 @@ module.exports = {
   updateUser,
   deleteUser,
   userLogin,
+  uploadAvatar,
+  upload,
 };
