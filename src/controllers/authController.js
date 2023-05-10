@@ -13,7 +13,7 @@ const authentication = (req, res, next) => {
     next();
   } catch (err) {
     // nếu không hợp lệ
-    errorCode(res, "Access denied");
+    errorCode(res, "Access denied.");
   }
 };
 module.exports = { authentication };

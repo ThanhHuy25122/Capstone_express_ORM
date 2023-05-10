@@ -16,61 +16,6 @@ const storage = multer.diskStorage({
 const fs = require("fs");
 const { descToken } = require("../config/jwt");
 
-const upload = multer({ storage: storage });
-// API POST method upload
-// yarn add multer
-
-const uploadImage = (req, res) => {
-  try {
-    // lưu image :  file.filename
-    const { imageId, userId } = req.query;
-    const user = descToken(req.headers.token);
-
-    // Kiểm tra nếu trùng userId mới cho upload image
-    if (user.data.nguoi_dung_id !== Number(userId)) {
-      return errorCode(res, "Access denied.");
-    }
-    let file = req.file;
-
-    const imageUrl = "/public/img/";
-
-    fs.readFile(process.cwd() + imageUrl + file.filename, (err, data) => {
-      if (err) {
-        return errorCode(res, "Error uploading image");
-      }
-
-      // => băm base64 => load hoặc lưu dự liệu
-      let fileBase = `data:${file.mimetype};base64,${Buffer.from(data).toString(
-        "base64"
-      )}`;
-
-      if (!file.filename) {
-        return errorCode(res, "Error uploading image");
-      }
-      successCode(
-        res,
-        `localhost:8080${imageUrl + file.filename}`,
-        "Upload image success"
-      );
-
-      // => xóa hình
-      //xóa file
-      // fs.unlink(process.cwd() + imageUrl + file.filename, (err) => {});
-
-      prisma.hinh_anh.update({
-        where: {
-          hinh_id: Number(imageId),
-        },
-        data: {
-          duong_dan: `localhost:8080` + imageUrl + file.filename,
-        },
-      });
-    });
-  } catch (error) {
-    failCode(res);
-  }
-};
-
 // get by all or by user id or keyword
 const getImage = async (req, res) => {
   const methods = Object.keys(req.query);
@@ -196,6 +141,65 @@ const updateImage = async (req, res) => {
       data: data,
     });
     successCode(res, data, "Image successfully uploaded");
+  } catch (error) {
+    failCode(res);
+  }
+};
+
+const upload = multer({ storage: storage });
+// API POST method upload
+// yarn add multer
+
+const uploadImage = async (req, res) => {
+  try {
+    // lưu image :  file.filename
+    const { imageId } = req.query;
+    const user = descToken(req.headers.token);
+
+    const image = await prisma.hinh_anh.findFirst({
+      where: { hinh_id: Number(imageId) },
+    });
+
+    // Kiểm tra nếu nguoi_dung.nguoi_dung_id === hinh_anh.nguoi_dung_id mới cho upload image
+    if (user.data.nguoi_dung_id !== image.nguoi_dung_id) {
+      return errorCode(res, "Access denied.");
+    }
+    let file = req.file;
+
+    const imageUrl = "/public/img/";
+
+    fs.readFile(process.cwd() + imageUrl + file.filename, (err, data) => {
+      if (err) {
+        return errorCode(res, "Error uploading image");
+      }
+
+      // => băm base64 => load hoặc lưu dự liệu
+      let fileBase = `data:${file.mimetype};base64,${Buffer.from(data).toString(
+        "base64"
+      )}`;
+
+      if (!file.filename) {
+        return errorCode(res, "Error uploading image");
+      }
+      successCode(
+        res,
+        `localhost:8080${imageUrl + file.filename}`,
+        "Upload image success"
+      );
+
+      // => xóa hình
+      //xóa file
+      // fs.unlink(process.cwd() + imageUrl + file.filename, (err) => {});
+
+      prisma.hinh_anh.update({
+        where: {
+          hinh_id: Number(imageId),
+        },
+        data: {
+          duong_dan: `localhost:8080` + imageUrl + file.filename,
+        },
+      });
+    });
   } catch (error) {
     failCode(res);
   }

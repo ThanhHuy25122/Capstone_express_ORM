@@ -12,7 +12,7 @@ const { authentication } = require("../controllers/authController");
 const userRouter = express.Router();
 
 userRouter.post("/login", userLogin);
-userRouter.get("/get-user", authentication, getUser);
+userRouter.get("/get-user", getUser);
 userRouter.get("/get-user/:userId", getUserById);
 userRouter.post("/create-user", authentication, createUser);
 userRouter.put("/update-user/:userId", authentication, updateUser);
